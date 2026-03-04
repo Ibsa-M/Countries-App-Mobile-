@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:countries_app/core/di/injection.dart';
+import 'package:countries_app/features/countries/presentation/pages/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -10,14 +11,11 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Countries App'),
-        ),
-      ),
-    );
-  }
+@override
+Widget build(BuildContext context) {
+  return const MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: HomePage(),
+  );
+}
 }

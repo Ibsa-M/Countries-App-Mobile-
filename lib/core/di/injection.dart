@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:dio/dio.dart';
 import 'package:countries_app/core/network/api_service.dart';
+import 'package:countries_app/features/countries/data/repositories/country_repository.dart';
 
 final sl = GetIt.instance;
 
@@ -13,4 +14,5 @@ Future<void> init() async {
     ),
   );
   sl.registerLazySingleton<ApiService>(() => ApiService());
+  sl.registerLazySingleton<CountryRepository>(() => CountryRepository());
 }
