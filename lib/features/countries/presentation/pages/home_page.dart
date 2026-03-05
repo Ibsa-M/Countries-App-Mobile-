@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../cubit/countries_cubit.dart';
+import 'detail_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -56,11 +57,26 @@ class HomeView extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final country = state.countries[index];
                       return ListTile(
-                        leading: Image.network(country.flags.png, width: 40),
-                        title: Text(country.name.common),
-                        subtitle:
-                            Text("Population: ${country.population}"),
-                      );
+  leading: Image.network(country.flags.png, width: 40),
+  title: Text(country.name.common),
+  subtitle: Text("Population: ${country.population}"),
+  onTap: () {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => DetailPage(
+        code: country.cca2,
+      ),
+    ),
+  );
+  },
+);
+                      // return ListTile(
+                      //   leading: Image.network(country.flags.png, width: 40),
+                      //   title: Text(country.name.common),
+                      //   subtitle:
+                      //       Text("Population: ${country.population}"),
+                      // );
                     },
                   );
                 }

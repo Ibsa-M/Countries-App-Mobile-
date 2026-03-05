@@ -17,7 +17,11 @@ class CountriesCubit extends Cubit<CountriesState> {
     emit(CountriesLoading());
     try {
       final countries = await _repository.getAllCountries();
-      _allCountries = countries;
+      countries.sort(
+      (a, b) => a.name.common.compareTo(b.name.common),
+    );
+
+      // _allCountries = countries;
       emit(CountriesLoaded(countries));
     } catch (e) {
       emit(CountriesError("Failed to fetch countries"));
